@@ -95,23 +95,11 @@ while True :
 
     if phone_number == "C" or phone_number == "c" :
         print (Fore.YELLOW, """
- [10] Ahmadizadeh:  9109051230
- [10] Ghavipangeh:  9179637298
- [10] Gholamzadeh:  9172175641
- [10] Bahmani:  9027767945
- [10] Dehghan:  9027960115
- [10] Firouzi:  9306762757
- [10] Ghasemi:  9170606413
- [10] Haghjoo:  9334448379
- [10] Asnafi:  9025748143
- [10] Moradi:  9178463473
- [10] Nozari:  9944809121
- [11] Baghodrat:  9177935805
- [11] Fazelian:  9305652449
- [11] Moghimi:  9052788703
- [11] Farhan:  9170533504
- [11] Safari:  9057261941
- [11] Shafei:   9126352459
+ [01] Contact1:  9*********
+ [02] Contact2:  9*********
+ [03] Contact3:  9*********
+ [04] Contact4:  9*********
+ [05] Contact5:  9*********
     """)
 
         input()
