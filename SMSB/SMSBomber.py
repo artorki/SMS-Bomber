@@ -1,10 +1,10 @@
-import platform, os, sys, Config
+import platform, os, sys, getpass
 
 System = platform.uname()[0]
 Clear = "cls" if System == "Windows" else "clear"
 os.system (Clear)
 
-libraries = ["colorama", "requests", "datetime", "time", "socket"]
+libraries = ["Config", "colorama", "requests", "datetime", "time", "socket"]
 
 def Check(x) :
     try:
@@ -14,6 +14,7 @@ def Check(x) :
 
 x = [Check(i) for i in libraries]
 
+import Config
 from colorama import Fore,init
 init()
 import requests
@@ -47,7 +48,7 @@ except:
     sys.exit ("\033[91m [-] Error (Connection-L47) - Connect to Internet")
 
 
-password = input (" [SMSB_V5|--> ")
+password = getpass.getpass (" [SMSB_V5|--> ")
 ... if password == f"{Config.password}" else sys.exit ("\n\033[91m [-] Error (Password-L51) - Wrong Password")
 
 
