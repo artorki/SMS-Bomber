@@ -14,13 +14,9 @@ def Check(x) :
 
 x = [Check(i) for i in libraries]
 
-import Config
+import Config, requests, datetime, time, socket
 from colorama import Fore,init
 init()
-import requests
-import datetime
-import time
-import socket
 
 
 def banner() :
