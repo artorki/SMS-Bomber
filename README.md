@@ -2,12 +2,17 @@
 Iranian SMS bomber for Windows
 
 
-#### ○ Monthly subscription
+#### ○ subscription:
+The possibility of receiving a subscription until a certain date
 
-#### ○ Has a password
+#### ○ Password:
+Ability to set a password and restrict access
 
-#### ○ Small contact book
+#### ○ Phone book:
+Ability to add desired numbers to the phonebook.
 
-#### ○ Sending messages at a certain time (from one hour to nine hours)
+#### ○ Timing:
+Ability to send messages at a predetermined time (from 1 hour to 9 hours)
 
-#### ○ Sending user system information and target number to Telegram
+#### ○ Notification:
+Sending user system information and target number to Telegram
