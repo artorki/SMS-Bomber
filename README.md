@@ -1,14 +1,14 @@
-
-# SMS Bomber
+## ● SMS Bomber
 Smart Iranian SMS bomber for Windows
 
-## Capability:
-[01] Monthly subscription
+#### ● Capability:
 
-[02] Has a password
+○ Monthly subscription
 
-[03] Small contact book
+○ Has a password
 
-[04] Sending messages at a certain time (from one hour to nine hours)
+○ Small contact book
 
-[05] Sending user system information and target number to Telegram
+○ Sending messages at a certain time (from one hour to nine hours)
+
+○ Sending user system information and target number to Telegram
